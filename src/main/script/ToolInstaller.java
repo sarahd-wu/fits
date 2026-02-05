@@ -258,7 +258,7 @@ public class ToolInstaller {
         extractZip(archive, targetDir);
         targetDir = targetDir.resolve("/exiftool-13.49_64");
     
-        Debugging
+        // Debugging
         System.out.println("archive: " + archive.toAbsolutePath() + " targetDir: " + targetDir.toAbsolutePath());
         try (var stream = Files.list(targetDir)) {
             stream.forEach(p -> System.out.println(p.getFileName()));
