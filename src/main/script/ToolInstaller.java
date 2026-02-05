@@ -256,13 +256,14 @@ public class ToolInstaller {
         var archive = downloadAndVerify(WINDOWS);
         var targetDir = toolDir.resolve(tool.windowsDir);
         extractZip(archive, targetDir);
-        targetDir = targetDir.resolve("/exiftool-13.49_64");
-    
+
         // Debugging
         System.out.println("archive: " + archive.toAbsolutePath() + " targetDir: " + targetDir.toAbsolutePath());
         try (var stream = Files.list(targetDir)) {
             stream.forEach(p -> System.out.println(p.getFileName()));
         }
+        targetDir = targetDir.resolve("/exiftool-13.49_64");
+        System.out.println("targetDir edited: " + targetDir.toAbsolutePath());
 
         Files.move(targetDir.resolve("exiftool(-k).exe"), targetDir.resolve("exiftool.exe"));
         Files.deleteIfExists(archive);
