@@ -256,20 +256,10 @@ public class ToolInstaller {
         var archive = downloadAndVerify(WINDOWS);
         var targetDir = toolDir.resolve(tool.windowsDir);
         extractZip(archive, targetDir);
-
-        // Debugging
-        System.out.println("archive: " + archive.toAbsolutePath() + " targetDir: " + targetDir.toAbsolutePath());
-        try (var stream = Files.list(targetDir)) {
-            stream.forEach(p -> System.out.println(p.getFileName()));
-        }
-        // targetDir = targetDir.resolve("/exiftool-13.49_64");
-        // System.out.println("targetDir edited: " + targetDir.toAbsolutePath());
-
         Path exe = Files.walk(targetDir)
                 .filter(p -> p.getFileName().toString().equalsIgnoreCase("exiftool(-k).exe"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("No exe found!"));
-
         Files.move(exe, targetDir.resolve("exiftool.exe"));
         Files.deleteIfExists(archive);
     }
