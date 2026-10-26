@@ -62,13 +62,13 @@ jobs:
           windows_md5 = os.environ["WINDOWS_MD5"]
 
           properties = {
-              "exiftool.version": version,
-              "exiftool.unix.url":
-                  f"(Image-ExifTool-{version}.tar.gz)",
-              "exiftool.unix.md5": unix_md5,
-              "exiftool.windows.url":
-                  f"(exiftool-{version}_64.zip)",
-              "exiftool.windows.md5": windows_md5,
+                "exiftool.version": version,
+                "exiftool.unix.url":
+                    f"https://sourceforge.net/projects/exiftool/files/Image-ExifTool-{version}.tar.gz/download",
+                "exiftool.unix.md5": unix_md5,
+                "exiftool.windows.url":
+                    f"https://sourceforge.net/projects/exiftool/files/exiftool-{version}_64.zip/download",
+                "exiftool.windows.md5": windows_md5,
           }
 
           with open(path) as f:
