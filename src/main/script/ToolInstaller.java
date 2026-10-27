@@ -204,7 +204,7 @@ public class ToolInstaller {
         extractAr(archive, temp);
         extractTarZst(temp.resolve("data.tar.zst"), temp);
 
-        Files.move(temp.resolve("usr/lib/x86_64-linux-gnu/libmediainfo.so.0.0.0"),
+        Files.move(temp.resolve("usr/lib/aarch64-linux-gnu/libmediainfo.so.0.0.0"),
                 target.resolve("libmediainfo.so.0"));
 
         deleteDir(temp);
@@ -217,7 +217,7 @@ public class ToolInstaller {
         extractTarZst(temp.resolve("data.tar.zst"), temp);
 
         Path libzen;
-        try (var files = Files.list(temp.resolve("usr/lib/x86_64-linux-gnu"))) {
+        try (var files = Files.list(temp.resolve("usr/lib/aarch64-linux-gnu"))) {
             libzen = files.filter(file -> file.getFileName().toString().startsWith("libzen.so.0."))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Failed to find libzen shared library"));
